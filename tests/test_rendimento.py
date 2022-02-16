@@ -1,5 +1,5 @@
 import pytest
-from src.Rendimento import Rendimento
+from src.models.Rendimento import Rendimento
 from src.exceptions.DescricaoEmBrancoException import DescricaoEmBrancoException
 from src.exceptions.ValorRendimentoInvalidoException import ValorRendimentoInvalidoException
 

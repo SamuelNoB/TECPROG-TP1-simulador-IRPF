@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
-from .exceptions.ValorRendimentoInvalidoException import ValorRendimentoInvalidoException
-from .exceptions.DescricaoEmBrancoException import DescricaoEmBrancoException
+from ..exceptions.ValorRendimentoInvalidoException import ValorRendimentoInvalidoException
+from ..exceptions.DescricaoEmBrancoException import DescricaoEmBrancoException
 
 
 @dataclass
