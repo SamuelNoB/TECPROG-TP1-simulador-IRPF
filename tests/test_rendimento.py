@@ -1,6 +1,7 @@
 import pytest
 from src.Rendimento import Rendimento
-
+from src.exceptions.DescricaoEmBrancoException import DescricaoEmBrancoException
+from src.exceptions.ValorRendimentoInvalidoException import ValorRendimentoInvalidoException
 
 rendimento_list = [
     ('rendimento de 100', 100),
@@ -17,10 +18,10 @@ rendimento_list_invalid_value = [
 
 invalid_description_list = ['', None]
 
-@pytest.mark.parametrize(['descricao', 'valor'], rendimento_list_invalid_value)
+@pytest.mark.parametrize(['descricao', 'valor'], rendimento_list)
 def test_rendimento_class(descricao, valor):
     um_rendimento = Rendimento(descricao, valor)
-    assert um_rendimento.valor_rendimento == valor
+    assert um_rendimento.valor == valor
 
 
 @pytest.mark.parametrize(['descricao', 'valor'], rendimento_list_invalid_value)
