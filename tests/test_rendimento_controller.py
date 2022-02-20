@@ -26,3 +26,4 @@ def test_delete_rendimento():
 
 def test_delete_invalid_rendimento():
     ...
+    
