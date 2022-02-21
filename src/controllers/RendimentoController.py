@@ -1,6 +1,5 @@
 from ..models.Rendimento import Rendimento
 class RendimentoController:
-    __rendimentos: list[Rendimento]  = []
     def __init__(self, rendimentos: list[Rendimento] = []) -> None:
         self.__rendimentos = rendimentos
 
@@ -9,14 +8,11 @@ class RendimentoController:
         self.__rendimentos.append(result)
         return result
 
-    def update():
-        ...
+    def list(self):
+        return self.__rendimentos
     
-    def get():
-        ...
-
-    def list():
-        ...
-    
-    def delete():
-        ...
+    def count_total_rendimento_value(self):
+        sum = 0
+        for rend in self.__rendimentos:
+            sum += rend.valor
+        return sum
