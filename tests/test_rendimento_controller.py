@@ -8,12 +8,12 @@ from src.exceptions.ValorRendimentoInvalidoException import ValorRendimentoInval
 add_rendimento_list = [
     ('rendimento de 100', 100),
     ('rendimento de 1', 1),
+    ('rendimento de -1', -1),
     ('rendimento de 999999', 999999),
 ]
 
 rendimento_list_invalid_param = [
     ('rendimento de 0', 0),
-    ('rendimento de -1', -1),
     ('rendimento de ""', ''),
     ('rendimento de None', None),
     ('', None)

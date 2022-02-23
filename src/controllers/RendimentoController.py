@@ -1,6 +1,6 @@
 from ..models.Rendimento import Rendimento
 class RendimentoController:
-    def __init__(self, rendimentos: list[Rendimento] = []) -> None:
+    def __init__(self, rendimentos = []) -> None:
         self.__rendimentos = rendimentos
 
     def add(self, valor: float, descricao: str) -> Rendimento:
