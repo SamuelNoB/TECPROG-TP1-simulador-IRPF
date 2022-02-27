@@ -12,6 +12,12 @@ faixa_dois_valores = [
   (1903.98, 1903.98, 0),
 ]
 
+faixa_tres_valores = [
+  (0, 0, 0),
+  (50, 50, 0),
+  (1900, 1900, 0)
+]
+
 @pytest.mark.parametrize('rendimento', rendimentos)
 def test_faixas_de_imposto_class(rendimento):
   faixa_de_imposto = Faixa_de_imposto(rbt=rendimento)
@@ -26,6 +32,13 @@ def test_faixa_1_um_valor(rendimento, valor_base, imposto_esperado):
 
 @pytest.mark.parametrize(['rendimento', 'valor_base','imposto_esperado'], faixa_dois_valores)
 def test_faixa_1_dois_valores(rendimento, valor_base, imposto_esperado):
+  faixa_de_imposto = Faixa_de_imposto(rbt=rendimento)
+  imposto_calculado = faixa_de_imposto.calcular_imposto()
+  assert imposto_calculado['faixa_1']['valor_imposto'] == imposto_esperado
+  assert imposto_calculado['faixa_1']['valor_base'] == valor_base
+
+@pytest.mark.parametrize(['rendimento', 'valor_base','imposto_esperado'], faixa_tres_valores)
+def test_faixa_1_tres_valores(rendimento, valor_base, imposto_esperado):
   faixa_de_imposto = Faixa_de_imposto(rbt=rendimento)
   imposto_calculado = faixa_de_imposto.calcular_imposto()
   assert imposto_calculado['faixa_1']['valor_imposto'] == imposto_esperado
