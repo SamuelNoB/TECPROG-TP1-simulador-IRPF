@@ -6,4 +6,4 @@ class Aliquota_efetiva:
   valor_base:float
 
   def calcular_aliquota(self) -> float:
-    return 3.17
+    return round((self.imposto_total / self.valor_base)*100 , 2)
