@@ -5,10 +5,14 @@ class Aliquota_efetiva:
   imposto_total:float
   valor_base:float
 
+  @staticmethod
+  def decimal_part(number: float) -> float:
+    return abs(number) - abs(math.floor(number))
+
   def normal_round(self, n, decimals=0):
     multiplier = 10 ** decimals
     expoN = n * multiplier
-    if abs(expoN) - abs(math.floor(expoN)) < 0.5:
+    if self.decimal_part(expoN) < 0.5:
       return math.floor(expoN) / multiplier
     return math.ceil(expoN) / multiplier
 
