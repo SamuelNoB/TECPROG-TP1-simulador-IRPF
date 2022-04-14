@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-import math
+from ..helpers.custom_round import normal_round
+
 
 TABELA_IRRF_2022 = {
         'faixa_1':{
@@ -32,19 +33,6 @@ TABELA_IRRF_2022 = {
 class Faixa_de_imposto:
   rbt: float
 
-  def __post_init__(self) -> None:
-      def normal_round(n, decimals=0):
-        multiplier = 10 ** decimals
-        expoN = n * multiplier
-        if abs(expoN) - abs(math.floor(expoN)) < 0.5:
-          return math.floor(expoN) / multiplier
-        return math.ceil(expoN) / multiplier
-
-      # def normal_round(n, decimals=0):
-      #   multiplier = 10 ** decimals
-      #   return math.ceil(n * multiplier) / multiplier
-      self.normal_round = normal_round
-
   def calcular_imposto(self) -> dict:
     rendimento = self.rbt
     total_imposto = 0
@@ -64,18 +52,18 @@ class Faixa_de_imposto:
 
       if(rendimento <= valor_maximo_na_faixa):
         calculado[faixa]['valor_base'] = rendimento
-        calculado[faixa]['valor_imposto'] = self.normal_round(TABELA_IRRF_2022[faixa]['aliquota'] * rendimento, 4)
+        calculado[faixa]['valor_imposto'] = normal_round(TABELA_IRRF_2022[faixa]['aliquota'] * rendimento, 4)
         total_imposto+=calculado[faixa]['valor_imposto'] 
         break
         
       else:
         calculado[faixa]['valor_base'] = valor_maximo_na_faixa
         rendimento = round(rendimento - calculado[faixa]['valor_base'], 2)
-        calculado[faixa]['valor_imposto'] = self.normal_round(
+        calculado[faixa]['valor_imposto'] = normal_round(
           TABELA_IRRF_2022[faixa]['aliquota'] * valor_maximo_na_faixa, 4
           )
         total_imposto+=calculado[faixa]['valor_imposto'] 
 
     calculado['total']['valor_base'] = self.rbt
-    calculado['total']['valor_imposto'] = self.normal_round(total_imposto, 2)
+    calculado['total']['valor_imposto'] = normal_round(total_imposto, 2)
     return calculado
