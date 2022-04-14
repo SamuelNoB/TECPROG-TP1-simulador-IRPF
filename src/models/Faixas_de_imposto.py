@@ -33,7 +33,6 @@ class Faixa_de_imposto:
           'aliquota': 0.275
         },
       }
-      import math
 
       def normal_round(n, decimals=0):
         multiplier = 10 ** decimals
@@ -46,8 +45,7 @@ class Faixa_de_imposto:
       #   multiplier = 10 ** decimals
       #   return math.ceil(n * multiplier) / multiplier
       self.normal_round = normal_round
- 
-    
+
   def calcular_imposto(self) -> dict:
     rendimento = self.rbt
     total_imposto = 0
