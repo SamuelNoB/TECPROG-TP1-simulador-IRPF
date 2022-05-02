@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    volumes:
+      - "./src/:/home/src/"
+
+  app-test:
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    volumes:
+      - "./src/:/home/src/"
+      - "./tests/:/home/tests/"
+      - "./docker/requirements-dev.txt:/home/docker/requirements-dev.txt"
+    command: >
+      bash -c "pip3 install -r docker/requirements-dev.txt && pytest -vv -p no:warnings"
+
+networks:
+  default:
+    external:
+      name: alei-network
