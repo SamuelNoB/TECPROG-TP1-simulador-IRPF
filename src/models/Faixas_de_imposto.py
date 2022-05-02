@@ -35,14 +35,7 @@ class Faixa_de_imposto:
     def calcular_imposto(self) -> dict:
         rendimento = self.rbt
         total_imposto = 0
-        calculado = {
-            "faixa_1": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_2": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_3": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_4": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_5": {"valor_imposto": 0, "valor_base": 0},
-            "total": {"valor_imposto": 0, "valor_base": 0},
-        }
+        calculado = {}
 
         maximo_anterior = 0
         for faixa in self.tabela_irrf_2022:
@@ -53,27 +46,34 @@ class Faixa_de_imposto:
             maximo_anterior = self.tabela_irrf_2022[faixa]["max"]
 
             if rendimento <= valor_maximo_na_faixa:
-                calculado[faixa]["valor_base"] = rendimento
-                calculado[faixa]["valor_imposto"] = self.normal_round(
-                    self.tabela_irrf_2022[faixa]["aliquota"] * rendimento, 4
-                )
+                calculado[faixa] = {
+                    "valor_base": rendimento,
+                    "valor_imposto": self.normal_round(
+                        self.tabela_irrf_2022[faixa]["aliquota"] * rendimento,
+                        4,
+                    ),
+                }
+
                 total_imposto += calculado[faixa]["valor_imposto"]
                 break
 
             else:
-                calculado[faixa]["valor_base"] = valor_maximo_na_faixa
+                calculado[faixa] = {
+                    "valor_base": valor_maximo_na_faixa,
+                    "valor_imposto": self.normal_round(
+                        self.tabela_irrf_2022[faixa]["aliquota"]
+                        * valor_maximo_na_faixa,
+                        4,
+                    ),
+                }
                 rendimento = round(
                     rendimento - calculado[faixa]["valor_base"], 2
                 )
-                calculado[faixa]["valor_imposto"] = self.normal_round(
-                    self.tabela_irrf_2022[faixa]["aliquota"]
-                    * valor_maximo_na_faixa,
-                    4,
-                )
                 total_imposto += calculado[faixa]["valor_imposto"]
 
-        calculado["total"]["valor_base"] = self.rbt
-        calculado["total"]["valor_imposto"] = self.normal_round(
-            total_imposto, 2
-        )
+        calculado["total"] = {
+            "valor_imposto": self.normal_round(total_imposto, 2),
+            "valor_base": self.rbt,
+        }
+
         return calculado

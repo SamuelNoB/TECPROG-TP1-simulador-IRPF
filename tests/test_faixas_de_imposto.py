@@ -39,10 +39,6 @@ um_caso = [
         1500,
         {
             "faixa_1": {"valor_imposto": 0, "valor_base": 1500},
-            "faixa_2": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_3": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_4": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_5": {"valor_imposto": 0, "valor_base": 0},
             "total": {"valor_imposto": 0, "valor_base": 1500},
         },
     )
@@ -53,10 +49,6 @@ dois_casos = [
         1700,
         {
             "faixa_1": {"valor_imposto": 0, "valor_base": 1700},
-            "faixa_2": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_3": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_4": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_5": {"valor_imposto": 0, "valor_base": 0},
             "total": {"valor_imposto": 0, "valor_base": 1700},
         },
     ),
@@ -65,9 +57,6 @@ dois_casos = [
         {
             "faixa_1": {"valor_imposto": 0, "valor_base": 1903.98},
             "faixa_2": {"valor_imposto": 44.7015, "valor_base": 596.02},
-            "faixa_3": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_4": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_5": {"valor_imposto": 0, "valor_base": 0},
             "total": {"valor_imposto": 44.70, "valor_base": 2500},
         },
     ),
@@ -78,10 +67,6 @@ tres_casos = [
         1900,
         {
             "faixa_1": {"valor_imposto": 0, "valor_base": 1900},
-            "faixa_2": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_3": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_4": {"valor_imposto": 0, "valor_base": 0},
-            "faixa_5": {"valor_imposto": 0, "valor_base": 0},
             "total": {"valor_imposto": 0, "valor_base": 1900},
         },
     ),
@@ -92,7 +77,6 @@ tres_casos = [
             "faixa_2": {"valor_imposto": 69.2003, "valor_base": 922.67},
             "faixa_3": {"valor_imposto": 138.6600, "valor_base": 924.40},
             "faixa_4": {"valor_imposto": 168.5138, "valor_base": 748.95},
-            "faixa_5": {"valor_imposto": 0, "valor_base": 0},
             "total": {"valor_imposto": 376.37, "valor_base": 4500},
         },
     ),
