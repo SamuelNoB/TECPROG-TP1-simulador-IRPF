@@ -2,6 +2,9 @@ from ..models.Rendimento import Rendimento
 
 
 class RendimentoController:
+    """
+    Classe responsável por fazer o gerenciamento de um conjunto de rendimentos
+    """
     def __init__(self, rendimentos=[]) -> None:
         self.__rendimentos = rendimentos
 

@@ -7,7 +7,9 @@ from ..exceptions.ValorRendimentoInvalidoException import (
 
 @dataclass
 class Rendimento:
-    descricao: str
+    """
+    Classe que representa um rendimento
+    """
     valor: float
 
     def __post_init__(self):

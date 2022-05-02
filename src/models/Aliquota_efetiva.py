@@ -4,6 +4,9 @@ import math
 
 @dataclass
 class Aliquota_efetiva:
+    """
+    Classe que representa a alíquota efetiva de um rendimento
+    """
     imposto_total: float
     valor_base: float
 

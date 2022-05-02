@@ -4,6 +4,9 @@ import math
 
 @dataclass
 class Faixa_de_imposto:
+    """
+    Classe que responsável por calcular o imposto de rendimento e suas faixas
+    """
     rbt: float
 
     def __post_init__(self) -> None:
@@ -27,9 +30,6 @@ class Faixa_de_imposto:
                 return math.floor(expoN) / multiplier
             return math.ceil(expoN) / multiplier
 
-        # def normal_round(n, decimals=0):
-        #   multiplier = 10 ** decimals
-        #   return math.ceil(n * multiplier) / multiplier
         self.normal_round = normal_round
 
     def calcular_imposto(self) -> dict:

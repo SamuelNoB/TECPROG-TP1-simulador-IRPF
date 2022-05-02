@@ -16,26 +16,32 @@ Trabalho 1 da disciplina de **Tecnicas de programação em plataformas emergente
 O trabalho consiste em criar uma aplicação que deve calcular aliquotas efetivas semelhante a aplicação
 da [Receita federal](https://www27.receita.fazenda.gov.br/simulador-irpf/).
 
+
 ## Comandos
 
 #### Executando o projeto
 
-Para executar o projeto deve-se ter o **python3** intalado em sua máquina e executar o seguinte comando:
+Para executar o projeto deve-se ter o **docker** e o **docker-compose** intalado em sua máquina e executar o seguinte comando:
 
 ```
-python main.py
+$ docker-compose build
+$ docker-compose run app
 ```
+
+![print da aplicação](img/example1.png)
 
 #### Executando os testes
 
 Para executar os testes da aplicação basta executar o comando:
 
 ```
-pytest
+$ docker-compose up --build app-test
 ```
+![testes](img/example2.png)
 
-Para o comando funcionar deve-se instalar a biblioteca de testes **pytest** com o seguinte comando:
+#### Tecnologias utilizados
 
-```
-pip install pytest
-```
+* Python
+* Docker
+* Docker-compose
+* Pytest
